@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    int n, i, j, temp, passos = 0;
+
+    printf("Quantos preços deseja cadastrar? ");
+    scanf("%d", &n);
+
+    int vet[n];
+
+    printf("Digite os preços:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &vet[i]);
+    }
+
+    printf("\nPreços antes da ordenação:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", vet[i]);
+    }
+    printf("\n");
+
+    for (i = 1; i < n; i++) {
+        temp = vet[i];
+        j = i - 1;
+        while (j >= 0 && vet[j] > temp) {
+            vet[j + 1] = vet[j];
+            j--;
+            passos++;
+        }
+        vet[j + 1] = temp;
+        passos++;
+    }
+
+    printf("\nPreços depois da ordenação (Insertion Sort):\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", vet[i]);
+    }
+
+    printf("\n\nTotal de passos realizados: %d\n", passos);
+
+    return 0;
+}
